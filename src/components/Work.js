@@ -48,7 +48,6 @@ const Work = () => {
   const decrease = useDecrease()
 
   const answer = useCallback(({ target: { value: choice } }) => {
-    console.log(choice, correct)
     if (choice === correct) {
       increase(10)
     } else {
