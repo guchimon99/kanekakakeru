@@ -49,9 +49,9 @@ const Work = () => {
 
   const answer = useCallback(({ target: { value: choice } }) => {
     if (choice === correct) {
-      increase(10)
+      increase(3)
     } else {
-      decrease(10)
+      decrease(1)
     }
     setJob(getJob(correct))
   }, [correct, increase, decrease])
