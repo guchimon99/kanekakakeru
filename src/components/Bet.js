@@ -8,7 +8,7 @@ const getGame = (balance) => {
   const step = 'input'
   const left = Math.floor(Math.random() * 100)
   const right = Math.floor(Math.random() * 100)
-  const rate = Math.floor(Math.random() * 9) / 10 + 1.1
+  const rate = Math.floor(Math.random() * 10) / 10 + 1
   const choice = ''
   const amount = balance >= 10 ? 10 : 0
   const result = ''
@@ -62,7 +62,7 @@ const Bet = () => {
     })()
 
     if (isCorrect) {
-      increase(amount * rate)
+      increase(Math.floor(amount * rate))
     } else {
       decrease(amount)
     }
@@ -70,11 +70,12 @@ const Bet = () => {
     setGame({
       ...game,
       step: 'finished',
-      result: isCorrect ? `+ ${amount * rate}` : `- ${amount}`
+      result: isCorrect ? `+ ${Math.floor(amount * rate)}` : `- ${amount}`
     })
   }, [game, choice])
 
   const next = useCallback(() => {
+    console.log(balance)
     setGame(getGame(balance))
   }, [balance])
 
@@ -106,7 +107,7 @@ const Bet = () => {
           </div>
           <div className="flex items-end pb-2">
             <div className="font-bold text-4xl mx-2">x</div>
-            <div className="font-bold text-6xl">{rate}</div>
+            <div className="font-bold text-6xl">{rate.toFixed(1)}</div>
           </div>
         </div>
         <div className="p-4">
